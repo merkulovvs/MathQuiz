@@ -144,5 +144,10 @@ namespace MathQuiz
                 answerBox.Select(0, lengthOfAnswer);
             }
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            label8.Text = DateTime.Now.ToString("dd MMMM yyyy");
+        }
     }
 }
