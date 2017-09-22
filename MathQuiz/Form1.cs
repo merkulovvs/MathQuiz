@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -105,7 +106,19 @@ namespace MathQuiz
                 
                 timeLeft--;
                 timeLabel.Text = timeLeft + " seconds";
+                if (timeLeft <= 5)
+                {
+                    timeLabel.BackColor = Color.Red;
+                }
+
+                if (timeLeft == 0)
+                {
+                    timeLabel.BackColor = Color.Transparent;
+                }
+          
+                
             }
+           
             else
             {
                 // If the user ran out of time, stop the timer, show
@@ -128,7 +141,7 @@ namespace MathQuiz
                 && (minuend - subtrahend == difference.Value)
                 && (multiplicand * multiplier == product.Value)
                 && (dividend / divisor == quotient.Value))
-                return true;
+                return true;                            
             else
                 return false;
         }
@@ -148,6 +161,30 @@ namespace MathQuiz
         private void Form1_Load(object sender, EventArgs e)
         {
             label8.Text = DateTime.Now.ToString("dd MMMM yyyy");
+        }
+
+        private void sum_ValueChanged(object sender, EventArgs e)
+        {
+            if (sum.Value == (addend1 + addend2))
+                SystemSounds.Beep.Play();
+        }
+
+        private void difference_ValueChanged(object sender, EventArgs e)
+        {
+            if (difference.Value == (minuend - subtrahend))
+                SystemSounds.Beep.Play();
+        }
+
+        private void product_ValueChanged(object sender, EventArgs e)
+        {
+            if (product.Value == (multiplicand*multiplier))
+                SystemSounds.Beep.Play();
+        }
+
+        private void quotient_ValueChanged(object sender, EventArgs e)
+        {
+            if (quotient.Value == (dividend * divisor))
+                SystemSounds.Beep.Play();
         }
     }
 }
